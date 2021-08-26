@@ -28,8 +28,8 @@ nlcd_file   <- "NLCD.tif"           # Landcover GeoTiff file
 output_file <- "GOATout.csv"        # output csv file
 
 # set domain attributes (use decimal degrees; required)
-BASE_LON <- -116.7928  # domain origin point longitude (deg) 
-BASE_LAT <- 35.3870    # domain origin point latitude (deg)
+BASE_LON <- -116.7928  # domain-origin point longitude (deg) 
+BASE_LAT <- 35.3870    # domain-origin point latitude (deg)
 subDist <- 400         # cardinal direction distance (m)
 
 # tunable parameters
@@ -41,7 +41,7 @@ slopeAcc <- 7  # maximum macroslope threshold (m)
 
 # additional prescribed values
 sampInt <- 2.5             # circular sampling interval (deg)
-OOC <- 2000                # non-suitable site indicator (deg)
+OOC <- 2000                # non suitable site indicator (deg)
 vsn <- 0.001               # very small number
 nLCF <- 95                 # total number of land cover classes
 LCF_hazard <- c(11,90,95)  # water-related NLCD land cover classes
@@ -152,9 +152,14 @@ Topo <- function(evalPoint){
   steepestSlopeNum <- which.max(abs(local_df$DTM_SLP))
   
   # determine influential slope
-  influenceSlope <- c(steepestSlopeNum, steepestSlopeNum-(nrow(local_df)/2))
-  influenceSlope <- ifelse(influenceSlope < 1, influenceSlope + nrow(local_df), influenceSlope)
-  slopeInf <- atan((abs(local_df$DTM[influenceSlope[1]] - local_df$DTM[influenceSlope[2]])) / (sampRad*2)) * (180/pi)
+  influenceSlope <- c(steepestSlopeNum, 
+                      steepestSlopeNum-(nrow(local_df)/2))
+  influenceSlope <- ifelse(influenceSlope < 1,
+                           influenceSlope + nrow(local_df), 
+                           influenceSlope)
+  slopeInf <- atan((abs(local_df$DTM[influenceSlope[1]] - 
+                        local_df$DTM[influenceSlope[2]])) / 
+                   (sampRad*2)) * (180/pi)
   
   # estimate deviation from planar
   planeDev <- mean(local_df$DTM_SLP)
@@ -196,10 +201,14 @@ spdf$MaxClimb  <- localObs[,6] # maximum climb
 
 # calculate roughness diagnostic
 spdf$Rough <- ifelse((spdf$SteepSlp <= slopeAcc), 
-                     spdf$VertDelta - ((spdf$InflSlp -abs(spdf$Plane))* 2.447438), OOC)
+                     spdf$VertDelta - 
+                     ((spdf$InflSlp -abs(spdf$Plane))* 2.447438), OOC)
 
 # incorporate land cover and vertical obstructions 
-spdf$Suitability <- ifelse(((spdf$LC==1) & abs(spdf$DSM-spdf$DTM < 1) & (spdf$Obstacle==1)), spdf$Rough, OOC)
+spdf$Suitability <- ifelse(((spdf$LC==1) & 
+                            abs(spdf$DSM-spdf$DTM < 1) & 
+                            (spdf$Obstacle==1)), 
+                           spdf$Rough, OOC)
 
 ####### plot results
 # show macro-slope
