@@ -18,5 +18,6 @@ The Geomorphic Oscillation Assessment Tool (GOAT) quantifies terrain roughness a
 This script uses a circular sampling technique to assess the general roughness of a location's surroundings. A user can modify the circle’s radius to suit their particular application needs, as long as the radius is greater than or equal to the required physical footprint of the helicopter (i.e., the area encompassed by the rotor disk and the tail). By assessing the variability in elevation from adjacent points that make up the circle, the tool can draw inferences about the general roughness of the landing zone. This circular sampling approach increases the likelihood that linear features, such as drainages, in the proximity of a potential area of interest are considered.
 
 Please see the report by Ekegren and LeGrand (2021) for a detailed overview of the script equations and code. 
-Add report link here.
+
+Ekegren, M. T. and LeGrand S. L.: Incorporating terrain roughness into helicopter landing zone site selection by using the Geomorphic Oscillation Assessment Tool (GOAT) v1.0. ERDC/CRREL SR-20-DRAFT, U.S. Army Engineer Research and Development Center, Hanover, New Hampshire, USA, (in press).
 
