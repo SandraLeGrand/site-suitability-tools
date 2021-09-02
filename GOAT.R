@@ -28,8 +28,8 @@ nlcd_file   <- "NLCD.tif"           # Landcover GeoTiff file
 output_file <- "GOATout.csv"        # output csv file
 
 # set domain attributes (use decimal degrees; required)
-BASE_LON <- -116.7928  # domain-origin point longitude (deg) 
-BASE_LAT <- 35.3870    # domain-origin point latitude (deg)
+BASE_LON <- -116.7928  # domain origin-point longitude (deg) 
+BASE_LAT <- 35.3870    # domain origin-point latitude (deg)
 subDist <- 400         # cardinal direction distance (m)
 
 # tunable parameters
@@ -41,7 +41,7 @@ slopeAcc <- 7  # maximum macroslope threshold (m)
 
 # additional prescribed values
 sampInt <- 2.5             # circular sampling interval (deg)
-OOC <- 2000                # non suitable site indicator (deg)
+OOC <- 2000                # nonsuitable site indicator (deg)
 vsn <- 0.001               # very small number
 nLCF <- 95                 # total number of land cover classes
 LCF_hazard <- c(11,90,95)  # water-related NLCD land cover classes
@@ -164,10 +164,10 @@ Topo <- function(evalPoint){
   # estimate deviation from planar
   planeDev <- mean(local_df$DTM_SLP)
   
-  # sample dsm at each point around the circle
+  # sample dsm at each radial point around the circle
   local_df$DSM <- dsm[cellFromXY(dsm, local_df)] 
   
-  # determine degree of climb for each circle point
+  # determine degree of climb for each radial point
   local_df$CLIMB <- atan((local_df$DSM - evalPoint[1,3]) / sampRad) * (180/pi)
   maxClimb <- max(local_df$CLIMB) # steepest climb
   
