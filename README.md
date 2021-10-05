@@ -19,5 +19,5 @@ This script uses a circular sampling technique to assess the general roughness o
 
 Please see the report by Ekegren and LeGrand (2021) for a detailed overview of the script equations and code. 
 
-Ekegren, M. T. and LeGrand S. L.: Incorporating terrain roughness into helicopter landing zone site selection by using the Geomorphic Oscillation Assessment Tool (GOAT) v1.0. ERDC/CRREL SR-20-DRAFT, U.S. Army Engineer Research and Development Center, Hanover, New Hampshire, USA, (in press).
+Ekegren, M. T. and LeGrand S. L.: Incorporating terrain roughness into helicopter landing zone site selection by using the Geomorphic Oscillation Assessment Tool (GOAT) v1.0. ERDC/CRREL TR-21-11, U.S. Army Engineer Research and Development Center, Hanover, New Hampshire, USA, 2021. http://dx.doi.org/10.21079/11681/42162
 
