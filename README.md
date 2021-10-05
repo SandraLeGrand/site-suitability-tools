@@ -1,6 +1,8 @@
 # site-suitability-tools
 Terrain characterization tools for site suitability assessment.
 
+[![DOI](https://zenodo.org/badge/396943079.svg)](https://zenodo.org/badge/latestdoi/396943079)
+
 ## Authors
 * Michael T. Ekegren (ERDC)
 * Sandra L. LeGrand (ERDC)
